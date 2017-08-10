@@ -8,10 +8,9 @@ minetest.register_node("seasonal_decor:lantern_hanging", {
 	description = "Lantern",
 	inventory_image = "seasonal_decor_lantern_inv.png",
 	tiles = {
-        "seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:50",
-        "seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:70",
-        "seasonal_decor_lantern_mat.png^seasonal_decor_lantern_glow.png"
-        },
+	"seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:50",
+	"seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:70",
+	"seasonal_decor_lantern_mat.png^seasonal_decor_lantern_glow.png"},
     drawtype = "nodebox",
     paramtype = "light",
     paramtype2 = "facedir",
@@ -45,10 +44,10 @@ minetest.register_node("seasonal_decor:lantern_hanging", {
             {-0.1875, -0.3125, -0.1875, 0.1875, 0.5, 0.1875},
         },
     },
-    	on_construct = function(pos)
-		local timer = minetest.env:get_node_timer(pos)
-			timer:start(1)
-		end,
+	on_construct = function(pos)
+	local timer = minetest.env:get_node_timer(pos)
+		timer:start(1)
+	end,
 	on_timer = function(pos, elapsed)
 		if minetest.env:get_timeofday() >= 0.75 or minetest.env:get_timeofday() < 0.25 then
 			minetest.set_node(pos, {name="seasonal_decor:lantern_hanging_on"}) else
@@ -126,11 +125,14 @@ minetest.register_node("seasonal_decor:lantern_hanging_on", {
 
 --tiny lanterns
 minetest.register_node("seasonal_decor:lantern_tiny", {
- description = "Faery Lights",
- inventory_image = "seasonal_decor_tiny_lights_inv.png",
- wield_image = "seasonal_decor_tiny_lights_inv.png",
- wield_scale = {x=0.5,y=0.5,z=0.5},
-	tiles = {"seasonal_decor_tiny_lights.png","seasonal_decor_tiny_lights.png","seasonal_decor_tiny_lights_sides.png"
+	description = "Faery Lights",
+	inventory_image = "seasonal_decor_tiny_lights_inv.png",
+	wield_image = "seasonal_decor_tiny_lights_inv.png",
+	wield_scale = {x=0.5,y=0.5,z=0.5},
+	tiles = {
+	"seasonal_decor_tiny_lights.png",
+	"seasonal_decor_tiny_lights.png",
+	"seasonal_decor_tiny_lights_sides.png"
 	},
 	drawtype = "nodebox",
 	paramtype2 = "facedir",
@@ -161,30 +163,30 @@ minetest.register_node("seasonal_decor:lantern_tiny", {
 })
 
 --suspension wiring for lanterns
-	minetest.register_node("seasonal_decor:lantern_wiring", {
-		description = "Suspension Wire",
-		drawtype = "nodebox",
-		inventory_image = "seasonal_decor_wiring.png",
-		wield_image = "seasonal_decor_wiring.png",
-		node_box = {
-			type = "connected",
-			fixed = {{-0.015625, -0.5, -0.015625, 0.015625, -0.46875, 0.015625}},
-connect_left = {{-0.5, -0.5, -0.015625, 0.015625, -0.46875, 0.015625}},
-connect_right = {{-0.015625, -0.5, -0.015625, 0.5, -0.46875, 0.015625}},
-connect_back = {{-0.015625, -0.5, -0.015625, 0.015625, -0.46875, 0.5}},
-connect_front = {{-0.015625, -0.5, -0.5, 0.015625, -0.46875, 0.015625}},
-		},
-			selection_box = {
-		type = "fixed",
-		fixed = {
+minetest.register_node("seasonal_decor:lantern_wiring", {
+	description = "Suspension Wire",
+	drawtype = "nodebox",
+	inventory_image = "seasonal_decor_wiring.png",
+	wield_image = "seasonal_decor_wiring.png",
+	node_box = {
+		type = "connected",
+		fixed = {{-0.015625, -0.5, -0.015625, 0.015625, -0.46875, 0.015625}},
+		connect_left = {{-0.5, -0.5, -0.015625, 0.015625, -0.46875, 0.015625}},
+		connect_right = {{-0.015625, -0.5, -0.015625, 0.5, -0.46875, 0.015625}},
+		connect_back = {{-0.015625, -0.5, -0.015625, 0.015625, -0.46875, 0.5}},
+		connect_front = {{-0.015625, -0.5, -0.5, 0.015625, -0.46875, 0.015625}},
+	},
+	selection_box = {
+			type = "fixed",
+			fixed = {
 			{-0.5, -0.5, -0.5, 0.5, -0.3125, 0.5},
 		},
 	},
-		connects_to = { "group:anchored_node", "group:stone", "group:cobble", "group:wood", "group:tree", "group:fence" },
-		paramtype = "light",
-		is_ground_content = false,
-		tiles = { "seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:225", },
-		walkable = false,
-		groups = { dig_immediate = 1, oddly_breakable_by_hand = 2, crumbly = 3, anchored_node = 1},
-		sounds = default.node_sound_leaves_defaults(),
-	})
+	connects_to = { "group:anchored_node", "group:stone", "group:cobble", "group:wood", "group:tree", "group:fence" },
+	paramtype = "light",
+	is_ground_content = false,
+	tiles = { "seasonal_decor_lantern_mat.png^[colorize:#1f1f1f:225", },
+	walkable = false,
+	groups = { dig_immediate = 1, oddly_breakable_by_hand = 2, crumbly = 3, anchored_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+})
